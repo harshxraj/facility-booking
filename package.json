@@ -2,11 +2,14 @@
   "name": "facility-booking",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "bookFacility.test.js",
   "scripts": {
     "test": "jest"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.7.0"
+  }
 }
