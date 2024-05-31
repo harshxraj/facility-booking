@@ -13,7 +13,9 @@ class FacilityBookingSystem {
 
   bookFacility(bookingInput) {
     const [facilityName, date, timeRange] = bookingInput.split(", ");
-    const [startTime, endTime] = timeRange.split(" - ").map((time) => parseInt(time.split(":")[0]));
+    const [startTime, endTime] = timeRange
+      .split(" - ")
+      .map((time) => parseInt(time.split(":")));
 
     const facility = this.facilities[facilityName];
 
