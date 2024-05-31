@@ -13,9 +13,7 @@ class FacilityBookingSystem {
 
   bookFacility(bookingInput) {
     const [facilityName, date, timeRange] = bookingInput.split(", ");
-    const [startTime, endTime] = timeRange
-      .split(" - ")
-      .map((time) => parseInt(time.split(":")));
+    const [startTime, endTime] = timeRange.split(" - ").map((time) => parseInt(time.split(":")[0]));
 
     const facility = this.facilities[facilityName];
 
@@ -29,14 +27,18 @@ class FacilityBookingSystem {
       return "Date must be greater than the current Date.";
     }
 
+    if (!facility.bookings[date]) {
+      facility.bookings[date] = {};
+    }
+
     for (let time = startTime; time < endTime; time++) {
-      if (facility.bookings[time]) {
+      if (facility.bookings[date][time]) {
         return "Booking Failed, Already Booked";
       }
     }
 
     for (let time = startTime; time < endTime; time++) {
-      facility.bookings[time] = true;
+      facility.bookings[date][time] = true;
     }
 
     let amount = 0;
